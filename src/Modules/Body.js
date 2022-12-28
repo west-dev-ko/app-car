@@ -1,22 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button, Alert, TouchableWithoutFeedback } from 'react-native';
+import axios from "axios";
 //import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Body() {
     function tien(){
-        Alert.alert('tiến');
+        axios
+        .get("http://192.168.37.1:8000/tien")
+        .then((response) => {
+            console.log(response.data);
+        });
     }
     function trai(){
-        Alert.alert('trái');
+        axios
+        .get("http://192.168.37.1:8000/trai")
+        .then((response) => {
+            console.log(response.data);
+        });
     }
     function phai(){
-        Alert.alert('phải');
+        axios
+        .get("http://192.168.37.1:8000/phai")
+        .then((response) => {
+            console.log(response.data);
+        });
     }
     function lui(){
-        Alert.alert('lùi');
+        axios
+        .get("http://192.168.37.1:8000/lui")
+        .then((response) => {
+            console.log(response.data);
+        });
     }
     function thoi(){
-        Alert.alert('thổi');
+        axios
+        .get("http://192.168.0.6:8000/thoi")
+        .then((response) => {
+            console.log(response.data);
+        });
+    }
+    function auto(){
+        axios
+        .get("http://192.168.0.6:3000/auto")
+        .then((response) => {
+            console.log(response.data);
+        });
     }
   return (
     <View style={styles.container}>
@@ -51,8 +79,14 @@ export default function Body() {
          <View style={styles.thoi}>
         <Button
         color="#7b68ee"
-        onPress={() => Alert.alert('aa')}
+        onPress={thoi}
          title="Thổi"/>
+         </View>
+         <View style={styles.thoi}>
+        <Button
+        color="#7b68ee"
+        onPress={auto}
+         title="Auto"/>
          </View>
     </View>
   );
